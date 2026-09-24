@@ -1,0 +1,15 @@
+[project]
+name = "opencode-session-extract-skill"
+version = "0.1.0"
+description = "Read-only Agent Skill for loading OpenCode session context"
+requires-python = ">=3.10"
+license = "MIT"
+readme = "README.md"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
