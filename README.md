@@ -17,31 +17,32 @@ It is designed for the common handoff: find sessions for the current repository,
 
 ## Install
 
-On Windows, install to the shared Agent Skills location, OpenCode's global skill location, or both:
+Recent GitHub CLI releases provide a first-party Skill installer. Run one of these commands from the repository where you want to use the Skill.
 
 ```powershell
-./install.ps1                    # both locations
-./install.ps1 -Target Shared     # ~/.agents/skills only
-./install.ps1 -Target OpenCode   # ~/.config/opencode/skills only
+# Project scope: installs to .agents/skills and can be committed for the team.
+gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract --agent opencode
+
+# User scope: available to OpenCode in every repository.
+gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract --agent opencode --scope user
 ```
 
-On macOS or Linux, copy `SKILL.md` and `scripts/` into the desired skill root:
+GitHub CLI records source metadata, so later updates are handled by:
 
-```bash
-mkdir -p ~/.agents/skills/opencode-session-extract
-cp -R SKILL.md scripts ~/.agents/skills/opencode-session-extract/
+```powershell
+gh skill update
 ```
 
-The installer backs up an existing installation before replacing its two managed files.
+For Codex, replace `--agent opencode` with `--agent codex`. OpenCode discovers both project-level `.agents/skills` and global `~/.config/opencode/skills` locations.
 
 ## CLI
 
 ```bash
-python scripts/extract_opencode_session.py --project /path/to/repo --list
-python scripts/extract_opencode_session.py --project /path/to/repo --latest
-python scripts/extract_opencode_session.py --project /path/to/repo --session ses_abc123
-python scripts/extract_opencode_session.py --project /path/to/repo --latest --tail 10 --keyword updater
-python scripts/extract_opencode_session.py --project /path/to/repo --latest --format json
+python skills/opencode-session-extract/scripts/extract_opencode_session.py --project /path/to/repo --list
+python skills/opencode-session-extract/scripts/extract_opencode_session.py --project /path/to/repo --latest
+python skills/opencode-session-extract/scripts/extract_opencode_session.py --project /path/to/repo --session ses_abc123
+python skills/opencode-session-extract/scripts/extract_opencode_session.py --project /path/to/repo --latest --tail 10 --keyword updater
+python skills/opencode-session-extract/scripts/extract_opencode_session.py --project /path/to/repo --latest --format json
 ```
 
 The database is auto-detected from common OpenCode locations. Override it with `--db PATH` or `OPENCODE_DB_PATH`.
@@ -54,7 +55,7 @@ Session text and tool output may contain source code, local paths, commands, or 
 
 ```bash
 python -m unittest discover -s tests -v
-python -m py_compile scripts/extract_opencode_session.py
+python -m py_compile skills/opencode-session-extract/scripts/extract_opencode_session.py
 ```
 
 ## Related projects

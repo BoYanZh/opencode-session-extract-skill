@@ -10,6 +10,8 @@ from unittest.mock import patch
 
 SCRIPT = (
     Path(__file__).parents[1]
+    / "skills"
+    / "opencode-session-extract"
     / "scripts"
     / "extract_opencode_session.py"
 )

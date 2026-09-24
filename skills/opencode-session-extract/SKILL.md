@@ -43,4 +43,3 @@ The default action without `--list` or `--session` is latest-session extraction,
 Read the generated output, summarize the user's goals, completed changes, unresolved failures, and last verified state. Do not dump a large transcript into the reply. Cross-check the repository's current files, `git status`, and recent commits because a session may end after a tool result without a final assistant message.
 
 The SQLite database is authoritative. The script opens it with `mode=ro`; do not copy, migrate, vacuum, or write to the live database for extraction. Fall back to manual schema inspection only if the script reports an unsupported schema.
-
