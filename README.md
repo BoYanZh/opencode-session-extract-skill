@@ -27,7 +27,7 @@ gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract
 gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract --agent opencode --scope user
 
 # Reproducible install: pin a released version.
-gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract@v1.0.0 --agent opencode --scope user
+gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract --agent opencode --scope user --pin v1.0.0
 ```
 
 GitHub CLI records source metadata, so later updates are handled by:
