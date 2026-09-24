@@ -1,6 +1,7 @@
 ---
 name: opencode-session-extract
 description: Extract OpenCode chat sessions for a project and load prior prompts, responses, and tool results into the current agent context. Use when asked to find, list, load, continue, recover, or search an OpenCode session for a workspace.
+license: MIT
 ---
 
 # OpenCode Session Extraction

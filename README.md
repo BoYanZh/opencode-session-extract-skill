@@ -25,6 +25,9 @@ gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract
 
 # User scope: available to OpenCode in every repository.
 gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract --agent opencode --scope user
+
+# Reproducible install: pin a released version.
+gh skill install BoYanZh/opencode-session-extract-skill opencode-session-extract@v1.0.0 --agent opencode --scope user
 ```
 
 GitHub CLI records source metadata, so later updates are handled by:
@@ -34,6 +37,13 @@ gh skill update
 ```
 
 For Codex, replace `--agent opencode` with `--agent codex`. OpenCode discovers both project-level `.agents/skills` and global `~/.config/opencode/skills` locations.
+
+Choose one scope for this Skill:
+
+- Use **user scope** for personal use across all repositories.
+- Use **project scope** when the repository should carry a team-visible or pinned copy.
+
+Avoid installing the same Skill ID at both scopes. OpenCode gives `~/.config/opencode/skills` higher precedence than project `.agents/skills`, so a stale user-scoped copy can shadow the project-scoped version.
 
 ## CLI
 
